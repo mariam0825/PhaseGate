@@ -1,0 +1,6 @@
+python3 -m unitest nameof file
+
+
+from unittest import TestCase
+
+from functionname import *
