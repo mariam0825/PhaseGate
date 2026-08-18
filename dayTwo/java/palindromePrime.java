@@ -2,7 +2,7 @@ public class palindromePrime{
 
     public static void main(String []args){
 
-    int number = 1,2,3,4,5,6,7,8;
+    int number = 12345678;
 
     int digit = 0;
 
