@@ -17,7 +17,7 @@ public class integernumber{
         
         digit = number % 10;
 
-        reverse = reverse + digit;
+        reverse = reverse *10 + digit;
         
        number= number/10;
  
