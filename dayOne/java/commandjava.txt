@@ -1,10 +1,8 @@
 To compile
-javac -cp "junit-platform-console-standalone-1.11.0.jar:out" -d out BankAccount.java BankAccountTest.java
-
+javac -cp "junit-platfrom-console-Standolene-1.11.0.jar:out'-d out testfile , filename
 
 To execute
-
-java -cp "junit-platform-console-standalone-1.11.0.jar:out" org.junit.platform.console.ConsoleLauncher execute --scan-class-path
+java - cp "junit-piatform-console-standalone-1.11.0.jar:out"org.junit.platfrom.console.consolelauncher execute--scan-class-path
 
 
 import org junit.jupiter.api.Test;

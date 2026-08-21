@@ -3,21 +3,19 @@ public class Evencheck{
 
 
 
-System.out.println ("The sum of two number is: "+ add(20 , 10));
-
+System.out.println ("The sum of two number is: "+ add(numberOne));
+return numberOne % 2 == 0
 
 }
-    public static int add (int numberOne , int numberTwo){
-            int numberOne = 20;
-
+    public static int add (int numberOne){
+        int numberOne ; = 20       
+    
         if(number0ne % 2 == 0 ){
 
-        int sum = numberOne + numberTwo;
-
-        return sum;
+        System.out.print("even");
         }else{
 
-            return numberTwo;
+            System.out.print("odd");
         }
 
 }
