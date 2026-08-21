@@ -1,0 +1,147 @@
+import java.util.ArrayList;
+
+public class GroceryStore {
+
+    // Add grocery item
+    public static void addGrocery(
+            String itemName,
+            double price,
+            int quantity,
+            ArrayList<String> groceries,
+            ArrayList<String> transactions) {
+
+        if (price > 0 && quantity > 0) {
+
+            String item =
+                    itemName + " | Price: ₦" + price +
+                    " | Quantity: " + quantity;
+
+            groceries.add(item);
+
+            transactions.add(
+                    "Added: " + itemName +
+                    " | Price: ₦" + price +
+                    " | Quantity: " + quantity
+            );
+
+        }
+    }
+
+
+    // Show grocery items
+    public static void showGroceries(
+            ArrayList<String> groceries) {
+
+        if (groceries.isEmpty()) {
+
+            System.out.println("No groceries available.");
+
+        } else {
+
+            System.out.println("Grocery Items:");
+
+            for (int i = 0; i < groceries.size(); i++) {
+
+                System.out.println(
+                        (i + 1) + ". " + groceries.get(i)
+                );
+            }
+        }
+    }
+
+
+    // Add a sale transaction
+    public static void sellGrocery(
+            String itemName,
+            int quantity,
+            ArrayList<String> groceries,
+            ArrayList<String> transactions) {
+
+        if (quantity <= 0) {
+
+            transactions.add(
+                    "Sale failed: invalid quantity"
+            );
+
+            return;
+        }
+
+        for (int i = 0; i < groceries.size(); i++) {
+
+            String item = groceries.get(i);
+
+            if (item.startsWith(itemName + " |")) {
+
+                String[] parts = item.split("\\|");
+
+                double price =
+                        Double.parseDouble(
+                                parts[1].replace("Price: ₦", "").trim()
+                        );
+
+                int currentQuantity =
+                        Integer.parseInt(
+                                parts[2].replace("Quantity:", "").trim()
+                        );
+
+                if (quantity <= currentQuantity) {
+
+                    int newQuantity =
+                            currentQuantity - quantity;
+
+                    groceries.set(
+                            i,
+                            itemName +
+                            " | Price: ₦" + price +
+                            " | Quantity: " + newQuantity
+                    );
+
+                    double total =
+                            price * quantity;
+
+                    transactions.add(
+                            "Sold: " + itemName +
+                            " | Quantity: " + quantity +
+                            " | Total: ₦" + total
+                    );
+
+                } else {
+
+                    transactions.add(
+                            "Sale failed: insufficient stock"
+                    );
+                }
+
+                return;
+            }
+        }
+
+        transactions.add(
+                "Sale failed: item not found"
+        );
+    }
+
+
+    // Show transaction history
+    public static void showTransactions(
+            ArrayList<String> transactions) {
+
+        if (transactions.isEmpty()) {
+
+            System.out.println("No transactions yet.");
+
+        } else {
+
+            System.out.println("Transactions:");
+
+            for (int i = 0; i < transactions.size(); i++) {
+
+                System.out.println(
+                        (i + 1) + ". " +
+                        transactions.get(i)
+                );
+            }
+        }
+    }
+}
+

@@ -1,0 +1,136 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class GroceryStoreMain {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        ArrayList<String> groceries =
+                new ArrayList<>();
+
+        ArrayList<String> transactions =
+                new ArrayList<>();
+
+
+        while (true) {
+
+            System.out.println("---- Welcome to Grocery Store App ----");
+            System.out.println("1. Add Grocery");
+            System.out.println("2. Sell Grocery");
+            System.out.println("3. View Groceries");
+            System.out.println("4. View Transaction History");
+            System.out.println("5. Exit");
+
+            System.out.print("Select option: ");
+            int option = input.nextInt();
+
+            switch (option) {
+
+                case 1:
+
+                    System.out.print("Enter grocery name: ");
+                    String itemName = input.next();
+
+                    System.out.print("Enter price: ");
+                    double price = input.nextDouble();
+
+                    System.out.print("Enter quantity: ");
+                    int quantity = input.nextInt();
+
+                    GroceryStore.addGrocery(
+                            itemName,
+                            price,
+                            quantity,
+                            groceries,
+                            transactions
+                    );
+
+                    if (price > 0 && quantity > 0) {
+
+                        System.out.println(
+                                "Grocery added successfully."
+                        );
+
+                    } else {
+
+                        System.out.println(
+                                "Invalid price or quantity."
+                        );
+                    }
+
+                    break;
+
+
+                case 2:
+
+                    System.out.print("Enter grocery name: ");
+                    String sellItem = input.next();
+
+                    System.out.print("Enter quantity to sell: ");
+                    int sellQuantity = input.nextInt();
+
+                    GroceryStore.sellGrocery(
+                            sellItem,
+                            sellQuantity,
+                            groceries,
+                            transactions
+                    );
+
+                    break;
+
+
+                case 3:
+
+                    GroceryStore.showGroceries(
+                            groceries
+                    );
+
+                    break;
+
+
+                case 4:
+
+                    GroceryStore.showTransactions(
+                            transactions
+                    );
+
+                    break;
+
+
+                case 5:
+
+                    System.out.println(
+                            "Final Grocery List:"
+                    );
+
+                    GroceryStore.showGroceries(
+                            groceries
+                    );
+
+                    System.out.println();
+
+                    GroceryStore.showTransactions(
+                            transactions
+                    );
+
+                    System.out.println(
+                            "Thank you for using Grocery Store App!"
+                    );
+
+                    input.close();
+
+                    return;
+
+
+                default:
+
+                    System.out.println(
+                            "Invalid option. Please try again."
+                    );
+            }
+        }
+    }
+}
+
